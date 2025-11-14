@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+:root {
+  --black: #333;
+  --white: #fff;
+  --gray: #ccc;
+  --light-gray: #f2f2f2;
+  --red: #ff0000;
+  --blue: #0000ff;
+  --green: #008000;
+  --yellow: #ffff00;
+  --purple: #800080;
+  --orange: #ffa500;
+  --pink: #ffc0cb;
+  --teal: #008080;
+  --maroon: #800000;
+  --navy: #000080;
+  --olive: #808000;
+  --silver: #c0c0c0;
+  --gold: #ffd700;
+  --indigo: #4b0082;
+  --violet: #ee82ee;
+  --turquoise: #40e0d0;
+  --salmon: #fa8072;
+  --plum: #dda0dd;
+  --orchid: #da70d6;
+  --khaki: #f0e68c;
+  --crimson: #dc143c;
+  --sienna: #a0522d;
+  --seagreen: #2e8b57;
+  --slateblue: #6a5acd;
+  --steelblue: #4682b4;
+  --tan: #d2b48c;
+  --thistle: #d8bfd8;
+  --tomato: #ff6347;
+  --wheat: #f5deb3;
+  --whitesmoke: #f5f5f5;
+  --yellowgreen: #9acd32;
+  --rebeccapurple: #663399;
+}
+
+body {
+  /* ここにbodyのスタイルを実装してください */
+  /* ヒント: font-family, background-color */
+}
+
+.container {
+  /* ここに.containerのスタイルを実装してください */
+  /* ヒント: max-width, margin, padding, background-color, border-radius, box-shadow */
+}
+
+h1 {
+  /* ここにh1のスタイルを実装してください */
+  /* ヒント: color, text-align */
+}
+
+.input-area {
+  /* ここに.input-areaのスタイルを実装してください */
+  /* ヒント: display, justify-content, margin-bottom */
+}
+
+#todo-input {
+  /* ここに#todo-inputのスタイルを実装してください */
+  /* ヒント: flex-grow, padding, border, border-radius */
+}
+
+#add-btn {
+  /* ここに#add-btnのスタイルを実装してください */
+  /* ヒント: padding, border, background-color, color, cursor, border-radius */
+}
+
+#todo-list {
+  /* ここに#todo-listのスタイルを実装してください */
+  /* ヒント: list-style-type, padding */
+}
+
+.todo-item {
+  /* ここに.todo-itemのスタイルを実装してください */
+  /* ヒント: display, justify-content, align-items, padding, border-bottom */
+}
+
+.todo-item.completed span {
+  /* ここに完了したTodoアイテムのテキストのスタイルを実装してください */
+  /* ヒント: text-decoration, color */
+}
+
+.todo-item span {
+  /* ここにTodoアイテムのテキストのスタイルを実装してください */
+  /* ヒント: flex-grow, cursor */
+}
+
+.delete-btn {
+  /* ここに削除ボタンのスタイルを実装してください */
+  /* ヒント: padding, border, background-color, color, cursor, border-radius */
+}
