@@ -1,7 +1,7 @@
 // --- 要素の取得 ---
-const todoInput = // ここに 'todo-input' の要素を取得するコードを書いてください
-const addBtn = // ここに 'add-btn' の要素を取得するコードを書いてください
-const todoList = // ここに 'todo-list' の要素を取得するコードを書いてください
+const todoInput = document.getElementById('todo-input')// ここに 'todo-input' の要素を取得するコードを書いてください
+const addBtn = document.getElementById('add-btn') // ここに 'add-btn' の要素を取得するコードを書いてください
+const todoList = document.getElementById('todo-list') // ここに 'todo-list' の要素を取得するコードを書いてください
 
 // --- データ ---
 // Todoリストのデータを格納する配列
@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ヒント: localStorage.getItem() を使って 'todos' というキーで保存されたデータを取得する
   // ヒント: 取得したデータはJSON形式なので、JSON.parse() を使ってJavaScriptのオブジェクトに変換する
   // ヒント: 読み込んだデータを使って renderTodos() を呼び出す
+  const localStorageTodos = localStorage.getItem('todos');
+  console.log(localStorageTodos);
+  
+  todos = JSON.parse(localStorageTodos);
+  console.log(todos);
+  
+  renderTodos();
 });
 
 // --- 関数 ---
@@ -22,17 +29,43 @@ document.addEventListener('DOMContentLoaded', () => {
 const renderTodos = () => {
   // ここにTodoリストを描画する処理を実装する
   // ヒント: todoListの中身を一度空にする
+
+  todoList.innerHTML = ""
   // ヒント: todos配列をループで処理する (forEach)
-  // ヒント: 各Todoアイテムに対して、li要素を作成する
-  // ヒント: li要素に 'todo-item' クラスを追加する
-  // ヒント: Todoが完了状態 (completed: true) の場合は、'completed' クラスも追加する
-  // ヒント: span要素を作成し、Todoのテキスト (todo.text) を設定する
-  // ヒント: span要素にクリックイベントを追加し、toggleComplete() を呼び出す
-  // ヒント: button要素を作成し、'削除'というテキストを設定する
-  // ヒント: button要素に 'delete-btn' クラスを追加する
-  // ヒント: button要素にクリックイベントを追加し、deleteTodo() を呼び出す
-  // ヒント: li要素にspan要素とbutton要素を追加する
-  // ヒント: todoListにli要素を追加する
+  todos.forEach((todo, index) => {
+    // ヒント: 各Todoアイテムに対して、li要素を作成する
+    // ヒント: li要素に 'todo-item' クラスを追加する
+    // ヒント: Todoが完了状態 (completed: true) の場合は、'completed' クラスも追加する
+    // ヒント: span要素を作成し、Todoのテキスト (todo.text) を設定する
+    // ヒント: span要素にクリックイベントを追加し、toggleComplete() を呼び出す
+    // ヒント: button要素を作成し、'削除'というテキストを設定する
+    // ヒント: button要素に 'delete-btn' クラスを追加する
+    // ヒント: button要素にクリックイベントを追加し、deleteTodo() を呼び出す
+    // ヒント: li要素にspan要素とbutton要素を追加する
+    // ヒント: todoListにli要素を追加する
+    const newLi = document.createElement("li");
+    newLi.classList.add("todo-item");
+    if (todo.completed == true) {
+      newLi.classList.add("completed");
+    }
+
+    const newSpan = document.createElement("span");
+    newSpan.textContent = todo.text;
+    newSpan.addEventListener('click', () => {
+      toggleComplete(index)
+    })
+    
+    const newBtn = document.createElement("button");
+    newBtn.textContent = "削除";
+    newBtn.classList.add('delete-btn')
+    newBtn.addEventListener('click', () => {
+      deleteTodo(index)
+    })
+
+    newLi.appendChild(newSpan);
+    newLi.appendChild(newBtn);
+    todoList.appendChild(newLi);
+  })
 };
 
 // localStorageにTodoリストを保存する関数
@@ -40,6 +73,7 @@ const saveTodos = () => {
   // ここにlocalStorageにTodoリストを保存する処理を実装する
   // ヒント: localStorage.setItem() を使って 'todos' というキーでtodos配列を保存する
   // ヒント: 保存するデータはJSON形式にする必要があるので、JSON.stringify() を使う
+  localStorage.setItem('todos', JSON.stringify(todos));
 };
 
 // Todoを追加する関数
@@ -51,6 +85,15 @@ const addTodo = () => {
   // ヒント: todoInputを空にする
   // ヒント: renderTodos() を呼び出して画面を更新する
   // ヒント: saveTodos() を呼び出してデータを保存する
+  const todoText = todoInput.value.trim()
+  if (todoText =="") {
+    return
+  }
+  todos.push({"text":todoText, completed: false })
+
+  todoInput.value = "";
+  renderTodos()
+  saveTodos()  
 };
 
 // Todoを削除する関数
@@ -59,6 +102,9 @@ const deleteTodo = (index) => {
   // ヒント: todos配列から指定されたindexの要素を削除する (splice)
   // ヒント: renderTodos() を呼び出して画面を更新する
   // ヒント: saveTodos() を呼び出してデータを保存する
+  todos.splice(index, 1);
+  renderTodos();
+  saveTodos();
 };
 
 // Todoの完了状態を切り替える関数
@@ -67,6 +113,10 @@ const toggleComplete = (index) => {
     // ヒント: todos配列の指定されたindexの要素のcompletedプロパティを反転させる
     // ヒント: renderTodos() を呼び出して画面を更新する
     // ヒント: saveTodos() を呼び出してデータを保存する
+    todos[index].completed = !todos[index].completed;
+    renderTodos();
+    saveTodos();
+    
 }
 
 
@@ -74,8 +124,16 @@ const toggleComplete = (index) => {
 // '追加'ボタンをクリックした時の処理
 // ここに '追加'ボタンのクリックイベントリスナーを追加する
 // ヒント: addBtn.addEventListener('click', ...)
+addBtn.addEventListener('click', () => {
+  addTodo();
+})
 
 // EnterキーでもTodoを追加できるようにする
 // ここに 'todo-input' のキープレスイベントリスナーを追加する
 // ヒント: todoInput.addEventListener('keypress', ...)
 // ヒント: イベントオブジェクトの key プロパティが 'Enter' の場合のみ addTodo() を呼び出す
+todoInput.addEventListener('keypress',  (event)=> {
+  if (event.key == 'Enter') {
+    addTodo();
+  }
+})
