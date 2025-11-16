@@ -42,54 +42,101 @@
 body {
   /* ここにbodyのスタイルを実装してください */
   /* ヒント: font-family, background-color */
+  font-family: "メイリオ", "Meiryo", sans-serif;
+  background-color: #fff;
 }
 
 .container {
   /* ここに.containerのスタイルを実装してください */
   /* ヒント: max-width, margin, padding, background-color, border-radius, box-shadow */
+  background-color: #ccc;
+  border-radius: 5px;
+  padding: 10px 30px;
+  margin: 10px auto;
+  max-width: 80%;
+  box-shadow: 5px 5px #e9dede;
 }
 
 h1 {
   /* ここにh1のスタイルを実装してください */
   /* ヒント: color, text-align */
+  color: #000;
+  text-align: center;
 }
 
 .input-area {
   /* ここに.input-areaのスタイルを実装してください */
   /* ヒント: display, justify-content, margin-bottom */
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 #todo-input {
   /* ここに#todo-inputのスタイルを実装してください */
   /* ヒント: flex-grow, padding, border, border-radius */
+  flex-grow: 4;
+  padding: 5px;
+  border: #000;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 #add-btn {
   /* ここに#add-btnのスタイルを実装してください */
   /* ヒント: padding, border, background-color, color, cursor, border-radius */
+  flex-grow: 1;
+  padding: 5px;
+  border: #000;
+  background-color: #66cdaa;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 #todo-list {
   /* ここに#todo-listのスタイルを実装してください */
   /* ヒント: list-style-type, padding */
+  list-style-type: disc;
+  padding: 5px;
+  margin-left: 20px;
 }
 
 .todo-item {
   /* ここに.todo-itemのスタイルを実装してください */
   /* ヒント: display, justify-content, align-items, padding, border-bottom */
+  justify-content: left;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  border-bottom: 0.5px solid #000;
+  display: flex;
 }
 
 .todo-item.completed span {
   /* ここに完了したTodoアイテムのテキストのスタイルを実装してください */
   /* ヒント: text-decoration, color */
+  text-decoration: line-through;
+  color: #000;
 }
 
 .todo-item span {
   /* ここにTodoアイテムのテキストのスタイルを実装してください */
   /* ヒント: flex-grow, cursor */
+  flex-grow: 4;
 }
 
 .delete-btn {
   /* ここに削除ボタンのスタイルを実装してください */
   /* ヒント: padding, border, background-color, color, cursor, border-radius */
+  padding: 5px;
+  border: solid #ff6347;
+  background-color: #ff6347;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  flex-grow: 1;
+  min-width: 10%;
+  max-width: 20%;
 }
